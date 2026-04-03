@@ -36,27 +36,31 @@ include 'includes/header.php';
         <form method="POST">
             <div class="mb-3">
                 <label class="form-label fw-semibold">Equipment Name</label>
-                <input type="text" name="item_name" class="form-control" value="<?= $row['item_name'] ?>" required>
+                <input type="text" name="name" class="form-control" value="<?= $row['name'] ?>" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Description</label>
+                <textarea name="description" class="form-control" rows="3"><?= $row['description'] ?></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label fw-semibold">Category</label>
                 <input type="text" name="category" class="form-control" value="<?= $row['category'] ?>" required>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-semibold">Quantity</label>
+                <label class="form-label fw-semibold">Total Quantity</label>
                 <input type="number" name="quantity" class="form-control" value="<?= $row['quantity'] ?>" required>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-semibold">Status</label>
-                <select name="status" class="form-select">
-                    <option value="Available" <?= $row['status'] == 'Available' ? 'selected' : '' ?>>Available</option>
-                    <option value="Borrowed" <?= $row['status'] == 'Borrowed' ? 'selected' : '' ?>>Borrowed</option>
-                    <option value="Maintenance" <?= $row['status'] == 'Maintenance' ? 'selected' : '' ?>>Maintenance</option>
-                </select>
+                <label class="form-label fw-semibold">Available Quantity</label>
+                <input type="number" name="available" class="form-control" value="<?= $row['available'] ?>" required>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-semibold">Borrower Name</label>
-                <input type="text" name="borrower" class="form-control" value="<?= $row['borrower'] ?>">
+                <label class="form-label fw-semibold">Condition</label>
+                <select name="condition" class="form-select">
+                    <option value="good" <?= $row['condition'] == 'good' ? 'selected' : '' ?>>Good</option>
+                    <option value="fair" <?= $row['condition'] == 'fair' ? 'selected' : '' ?>>Fair</option>
+                    <option value="poor" <?= $row['condition'] == 'poor' ? 'selected' : '' ?>>Poor</option>
+                </select>
             </div>
             <div class="d-flex gap-2">
                 <button type="submit" name="update" class="btn btn-primary w-100 fw-bold">Update Changes</button>
