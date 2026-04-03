@@ -29,6 +29,7 @@ if (isset($_POST['login'])) {
             </div>
             <button type="submit" name="login" class="btn btn-primary w-100 py-2 fw-bold">Sign In</button>
         </form>
+        <p class="mt-3 text-muted small">Forgot your password? <a href="#">Contact admin</a></p>
     </div>
 </body>
 </html>
