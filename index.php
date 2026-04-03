@@ -13,10 +13,10 @@ if (!isset($_SESSION['user'])) {
 $total_res = mysqli_query($conn, "SELECT COUNT(*) as total FROM equipment");
 $total_data = mysqli_fetch_assoc($total_res);
 
-$avail_res = mysqli_query($conn, "SELECT COUNT(*) as total FROM equipment WHERE status='Available'");
+$avail_res = mysqli_query($conn, "SELECT COUNT(*) as total FROM equipment WHERE available > 0");
 $avail_data = mysqli_fetch_assoc($avail_res);
 
-$borrow_res = mysqli_query($conn, "SELECT COUNT(*) as total FROM equipment WHERE status='Borrowed'");
+$borrow_res = mysqli_query($conn, "SELECT COUNT(*) as total FROM equipment WHERE available < quantity");
 $borrow_data = mysqli_fetch_assoc($borrow_res);
 
 // 4. I-include ang header
@@ -52,20 +52,25 @@ include 'includes/header.php';
                     
                     if(mysqli_num_rows($res) > 0):
                         while($row = mysqli_fetch_assoc($res)):
-                            // Dynamic badge color base sa status
-                            $status = strtolower($row['status']);
-                            $cls = "bg-secondary"; // default
-                            if($status == 'available') $cls = "bg-success";
-                            if($status == 'borrowed') $cls = "bg-warning text-dark";
-                            if($status == 'maintenance') $cls = "bg-danger";
+                            // Determine status based on available count
+                            if($row['available'] == $row['quantity']) {
+                                $status = 'available';
+                                $cls = "bg-success";
+                            } elseif($row['available'] == 0) {
+                                $status = 'borrowed';
+                                $cls = "bg-warning text-dark";
+                            } else {
+                                $status = 'partial';
+                                $cls = "bg-info text-dark";
+                            }
                     ?>
                     <tr>
                         <td>#<?= $row['id'] ?></td>
-                        <td class="fw-bold text-primary"><?= $row['item_name'] ?></td>
+                        <td class="fw-bold text-primary"><?= $row['name'] ?></td>
                         <td><?= $row['category'] ?></td>
                         <td><?= $row['quantity'] ?></td>
-                        <td><span class="badge rounded-pill <?= $cls ?>"><?= $row['status'] ?></span></td>
-                        <td><?= !empty($row['borrower']) && $row['borrower'] != '-' ? $row['borrower'] : '<span class="text-muted small">None</span>' ?></td>
+                        <td><span class="badge rounded-pill <?= $cls ?>"><?= ucfirst($status) ?></span></td>
+                        <td><span class="text-muted small">None</span></td>
                         <td class="text-center">
                             <a href="update.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-outline-primary mx-1">✎ Edit</a> 
                             <a href="delete.php?id=<?= $row['id'] ?>" 
