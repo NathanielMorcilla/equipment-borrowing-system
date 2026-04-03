@@ -17,10 +17,10 @@ include 'includes/header.php';
                 <div class="mb-3">
                     <div class="bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 70px; height: 70px; font-size: 30px;">👩‍💻</div>
                 </div>
-                <h4 class="fw-bold">Maria Santos</h4>
-                <p class="small opacity-75 fw-semibold">Database Architect / Backend</p>
+                <h4 class="fw-bold">Maria Isabella Villaflor</h4>
+                <p class="small opacity-75 fw-semibold">designer</p>
                 <hr class="bg-white">
-                <p class="small">In-charge sa pagbuo ng SQL structures at pag-optimize ng database connections sa system.</p>
+                <p class="small">Solid nyan na ginawan ng ui itong project namin</p>
             </div>
         </div>
 
@@ -29,10 +29,10 @@ include 'includes/header.php';
                 <div class="mb-3">
                     <div class="bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 70px; height: 70px; font-size: 30px;">🎨</div>
                 </div>
-                <h4 class="fw-bold">John Dela Cruz</h4>
-                <p class="small opacity-75 fw-semibold">Frontend Developer / UI Designer</p>
+                <h4 class="fw-bold">John Nathaniel Morcilla</h4>
+                <p class="small opacity-75 fw-semibold">Nag code ng solid</p>
                 <hr class="bg-white">
-                <p class="small">Nakatuon sa paggawa ng modernong user interface gamit ang Bootstrap at Custom CSS styles.</p>
+                <p class="small">nag code</p>
             </div>
         </div>
 
@@ -41,8 +41,8 @@ include 'includes/header.php';
                 <div class="mb-3">
                     <div class="bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 70px; height: 70px; font-size: 30px;">💻</div>
                 </div>
-                <h4 class="fw-bold">Sarah Johnson</h4>
-                <p class="small opacity-75 fw-semibold">Lead Programmer / CRUD Logic</p>
+                <h4 class="fw-bold">John Benedict Flores</h4>
+                <p class="small opacity-75 fw-semibold">nag code</p>
                 <hr class="bg-white">
                 <p class="small">Ang bumuo ng kabuuang logic ng Create, Read, Update, at Delete operations ng project.</p>
             </div>
