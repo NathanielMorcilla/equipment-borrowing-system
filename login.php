@@ -1,7 +1,10 @@
-<?php 
+<?php
 include 'config.php';
+// Check if login form is submitted
 if (isset($_POST['login'])) {
-    $_SESSION['user'] = "Admin"; 
+    // Set session for admin user
+    $_SESSION['user'] = "Admin";
+    // Redirect to index page
     header("Location: index.php");
 }
 ?>
