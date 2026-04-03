@@ -21,6 +21,12 @@ if (isset($_POST['login'])) {
         <form method="POST">
             <input type="email" class="form-control mb-3" placeholder="Email Address" required>
             <input type="password" class="form-control mb-3" placeholder="Password" required>
+            <div class="form-check mb-3 text-start">
+                <input class="form-check-input" type="checkbox" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">
+                    Remember me
+                </label>
+            </div>
             <button type="submit" name="login" class="btn btn-primary w-100 py-2 fw-bold">Sign In</button>
         </form>
     </div>
