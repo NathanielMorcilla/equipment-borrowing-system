@@ -4,15 +4,14 @@ include 'config.php';
 if (!isset($_SESSION['user'])) { header("Location: login.php"); exit(); }
 
 if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $description = $_POST['description'];
+    $item_name = $_POST['item_name'];
     $category = $_POST['category'];
     $quantity = $_POST['quantity'];
-    $available = $_POST['available'];
-    $condition = $_POST['condition'];
+    $status = $_POST['status'];
+    $borrower = trim($_POST['borrower']) ?: '-';
 
-    $sql = "INSERT INTO equipment (name, description, category, quantity, available, `condition`) 
-            VALUES ('$name', '$description', '$category', '$quantity', '$available', '$condition')";
+    $sql = "INSERT INTO equipment (item_name, category, quantity, status, borrower) 
+            VALUES ('$item_name', '$category', '$quantity', '$status', '$borrower')";
 
     if (mysqli_query($conn, $sql)) {
         header("Location: index.php");
@@ -30,11 +29,7 @@ include 'includes/header.php';
         <form method="POST">
             <div class="mb-3">
                 <label class="form-label fw-semibold">Equipment Name</label>
-                <input type="text" name="name" class="form-control" placeholder="e.g. Laptop Dell" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Description</label>
-                <textarea name="description" class="form-control" rows="3" placeholder="Brief description of the equipment"></textarea>
+                <input type="text" name="item_name" class="form-control" placeholder="e.g. Laptop Dell" required>
             </div>
             <div class="mb-3">
                 <label class="form-label fw-semibold">Category</label>
@@ -45,16 +40,16 @@ include 'includes/header.php';
                 <input type="number" name="quantity" class="form-control" value="1" required>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-semibold">Available Quantity</label>
-                <input type="number" name="available" class="form-control" value="1" required>
+                <label class="form-label fw-semibold">Status</label>
+                <select name="status" class="form-select">
+                    <option value="Available">Available</option>
+                    <option value="Borrowed">Borrowed</option>
+                    <option value="Maintenance">Maintenance</option>
+                </select>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-semibold">Condition</label>
-                <select name="condition" class="form-select">
-                    <option value="good">Good</option>
-                    <option value="fair">Fair</option>
-                    <option value="poor">Poor</option>
-                </select>
+                <label class="form-label fw-semibold">Borrower</label>
+                <input type="text" name="borrower" class="form-control" placeholder="Leave blank if none">
             </div>
             <div class="d-flex gap-2">
                 <button type="submit" name="submit" class="btn btn-primary w-100 fw-bold">Save Equipment</button>
